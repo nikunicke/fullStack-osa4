@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNwaWRlciBNYW4iLCJpZCI6IjVjY2RlZmNmOTIwNGU3MWM2ODQzZTM5ZSIsImlhdCI6MTU1NzA2MzkzOH0.8mpnilFq6b0kAgknfkxCQwFVKiLZHJ-VDXQclhDVEtU
+
+{
+    "title": "Microchipping workers is a thing. Should it be?",
+    "author": "Michele Chandler",
+    "url": "https://medium.com/cxo-magazine/microchipping-workers-is-a-thing-should-it-be-e74ea1de7cb9"
+}
