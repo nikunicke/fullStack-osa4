@@ -100,7 +100,24 @@ test('Remove item by id', async () => {
     expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
 })
 
-test('Update likes by id', async () => {
+test('Remove non-existing item', async () => {
+    const blogsAtStart = await helper.blogsInDB()
+    const blogToDelete = blogsAtStart[0]
+
+    await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(204)
+
+    await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(500)
+
+    const blogsAtEnd = await helper.blogsInDB()
+    expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
+
+})
+
+test.only('Update likes by id', async () => {
     const blogsAtStart = await helper.blogsInDB()
     const blogToUpdate = blogsAtStart[0]
     blogToUpdate.likes += 1

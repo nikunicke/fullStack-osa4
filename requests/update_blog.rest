@@ -1,6 +1,6 @@
-PUT http://localhost:3003/api/blogs/5cb70fe3b08bd62298b56949
+PUT http://localhost:3003/api/blogs/5cceea6b689d5227c4dcd1bf
 Content-Type: application/json
 
 {
-    "likes": 67
+    "likes": 77
 }

@@ -4,7 +4,7 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 blogRouter.get('/', async (req, res) => {
-    const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
+    const blogs = await Blog.find({}).populate('user', { username: 1, name: 1, id: 1 })
     res.json(blogs.map(blog => blog.toJSON()))
 })
 
@@ -59,10 +59,16 @@ blogRouter.delete('/:id', async (req, res ,next) => {
 
         const blog = await Blog.findById(req.params.id)
 
+        console.log(1)
+        console.log(decodedToken.id)
+        console.log(2)
+        console.log(blog.user.toString())
+
         if (blog.user.toString() === decodedToken.id) {
             await Blog.findByIdAndDelete(blog.id)
-            return res.status(204).end()
+            res.status(204).end()
         } else {
+            console.log(decodedToken.id, blog.user.toString())
             return res.status(401).json({ error: 'unauthorized' })
         }
     } catch (err) {
